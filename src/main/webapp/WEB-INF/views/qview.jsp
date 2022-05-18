@@ -23,49 +23,55 @@
 		</tr>
 		<tr>
 			<table width="70%" border="0" cellspacing="0" cellpadding="10">
-				<tr>
-					<td height="500" bgcolor="#D5D5D5" rowspan="6" align="center">
-						<table border="0" cellspacing="0" cellpadding="10">
-							<form action="write" method="post" name="reg_frm">
+				<tr>					
+					<td height="500" bgcolor="#D5D5D5" align="center">
+						<table border="0" cellspacing="0" cellpadding="10">							
+							<form action="modify" method="post" name="reg_frm">
+								<input type="hidden" name="qnum" value="${qview.qnum }">
 								<tr>
 									<td class="td-type01">ID</td>
-									<td><input id="input01" type="text" name="qid" value="<%if(session.getAttribute("id") !=null) {out.println(session.getAttribute("id"));} else{out.print("GUEST");} %> "readonly"></td>
+									<!--  <td><input id="input01" type="text" name="qid" value="<% if(session.getAttribute("id") != null) {out.print(session.getAttribute("id")); } else {out.print("GUEST");} %>" readonly></td> -->
+									<td><input id="input01" type="text" name="qid" value="${qview.qid }" readonly></td>
 								</tr>
 								<tr>
 									<td class="td-type01">NAME</td>
-									<td><input id="input01" type="text" name="qname"></td>
-								
+									<td><input id="input01" type="text" name="qname" value="${qview.qname }"></td>
 								</tr>
 								<tr>
 									<td class="td-type01">QUESTION</td>
-									<td><textarea id="input01" name="qcontent" rows="5" cols="26"></textarea></td>
-								
-								</tr>
+									<td>
+										<textarea id="input01" name="qcontent" rows="5" cols="26">${qview.qcontent }</textarea>
+									</td>
+								</tr>								
 								<tr>
 									<td class="td-type01">E-MAIL</td>
-									<td><input id="input01" type="text" name="qemail"></td>
-								
+									<td><input id="input01" type="text" name="qemail" value="${qview.qemail }"></td>
+								</tr>
+								<tr>
+									<td class="td-type01">DATE</td>
+									<td><input id="input01" type="text" name="qdate" value="${qview.qdate }" readonly></td>
 								</tr>
 								<tr>
 									<td colspan="2">
-									<input id="button01" type="button" value="글쓰기" onclick="boardConfirm()">&nbsp;&nbsp;&nbsp;&nbsp;
+									<input id="button01" type="submit" value="질문수정">
 									<input id="button01" type="button" value="글목록" onclick="javascript:window.location='list'">
-								</td>
-									
-								
+									</td>									
 								</tr>
-							</form>
+								<tr>
+									<td colspan="2" align="right" class="td-type01">
+										<a href="delete?qnum=${qview.qnum }"><strike>QUESTION DELETE</strike></a>
+									</td>
+								</tr>
+							</form>						
 						</table>
 					</td>
-				</tr>
-
+				</tr>			
 			</table>
-		
-		</tr>
-
-
+		</tr>	
 	</table>
 	<center>
+	
+	
 	<%@ include file="include/footer.jsp" %>
 </body>
 </html>

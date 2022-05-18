@@ -12,8 +12,34 @@
 		<tr height="50">
 			<td width="69%">&nbsp;</td>
 			<td width="5%"><a href="${pageContext.request.contextPath }/">home</a></td>
-			<td width="5%"><a href="login">login</a></td>
-			<td width="5%"><a href="join">join</a></td>
+			<td width="5%">
+				<% 
+					String sessionId = (String) session.getAttribute("id"); 
+					if(sessionId == null) {
+				%>
+					<a href="login">login</a>
+				<%
+					} else {
+				%>
+					<a href="logout">logout</a>
+				<%
+					}
+				%>
+			</td>
+			<td width="5%">
+				<% 
+					if(sessionId == null) {
+				%>
+					<a href="join">join</a>
+				<%
+					} else {
+				%>
+				
+					<a href="infoModify">modify</a>
+				<%
+					}
+				%>
+			</td>
 			<td width="5%"><a href="profile">profile</a></td>
 			<td width="6%"><a href="question">question</td>
 			<td width="5%"><a href="contact">contact</td>
